@@ -1,0 +1,10 @@
+.gamecontainer{
+    display: flex;
+    flex-wrap: wrap;
+    }
+.card {
+    width: 128px;
+    height: 128px;
+    margin: 5px;
+    background-size: cover;
+}

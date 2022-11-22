@@ -1,4 +1,10 @@
-<p>memory works!</p>
-<div>
-    <div class="card"[style.backgroundimage]="card.card1"></div>
+<h1 style="text-align:center">Memory</h1>
+<div class="gamecontainer">
+    <div *ngFor="let card of cards$ | async" [style.backgroundImage]="'url(assets/img/'+card.card1+'.jpg)'"
+        class="card">{{card.card1}}</div>
+</div>
+<h1>met Card component</h1>
+<div class="gamecontainer">
+    <app-card *ngFor="let card of cards$ | async"
+        [card]="card" (cardClicked)="onClickCard($event)">{{card.card1}}</app-card>
 </div>
