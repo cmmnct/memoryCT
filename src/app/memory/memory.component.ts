@@ -10,11 +10,13 @@ import { CardsService } from '../services/cards.service';
 })
 export class MemoryComponent implements OnInit {
   cards$!: Observable<Card[]>;
+  cardbase$!: Observable<Card[]>;
 
   constructor(private cardservice: CardsService) {}
 
   ngOnInit(): void {
     this.cards$ = this.cardservice.getCards()
+    this.cardbase$ = this.cardservice.getCardsApi()
   }
 
   onClickCard(event: Card) {

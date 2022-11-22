@@ -1,22 +1,36 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http'
-import { Observable, concat } from 'rxjs';
+import { HttpClient, HttpHeaders} from '@angular/common/http'
+import { Observable} from 'rxjs';
 import { Card } from '../models/card';
-import { map} from 'rxjs/operators'
+import { map, tap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs/internal/observable/of'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CardsService {
+  url = 'http://localhost:3000/posts';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getCards() : Observable<Card[]> {
-    return this.http.get<Card[]>('../../assets/cards.json')
-      .pipe(
-        map((result) => shuffle(result.concat(result)))
-    )
-}
+  // from local file
+  getCards(): Observable<Card[]> {
+    return this.http
+      .get<Card[]>('../../assets/cards.json')
+      .pipe(map((result) => shuffle(result.concat(result))));
+  }
+
+  // from api
+  getCardsApi(): Observable<Card[]> {
+    return this.http.get<Card[]>(this.url).pipe(
+      tap((result) => console.log('via Json server: ' + result)),
+      map((result) => shuffle(result.concat(result))),
+      catchError((err) => {
+        console.log('geen API gevonden');
+        return of(err);
+      })
+    );
+  }
 }
 
 export function shuffle(array:Array<any>) {
