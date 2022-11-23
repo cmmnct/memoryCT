@@ -1,15 +1,11 @@
 <h1 style="text-align:center">Memory</h1>
+<select [(ngModel)]="boardOption" (change)="onSelectBoard()">
+    <option value="-1" disabled selected >Kies een speelveld</option>
+    <option *ngFor="let item of list" [value]="item">{{item}} x {{item}}</option>
+</select>
+<hr>
+
+<h1>vanuit JSON server met Card component</h1>
 <div class="gamecontainer">
-    <div *ngFor="let card of cards$ | async" [style.backgroundImage]="'url(assets/img/'+card.card1+'.jpg)'"
-        class="card">{{card.card1}}</div>
-</div>
-<h1>Vanuit JSON server API</h1>
-<div class="gamecontainer">
-    <div *ngFor="let card of cardbase$ | async" [style.backgroundImage]="'url(assets/img/'+card.card1+'.jpg)'"
-        class="card">{{card.card1}}</div>
-</div>
-<h1>met Card component</h1>
-<div class="gamecontainer">
-    <app-card *ngFor="let card of cards$ | async" [card]="card" (cardClicked)="onClickCard($event)">{{card.card1}}
-    </app-card>
-</div>
+    <app-card *ngFor="let card of cardbase$ | async" [card]="card" (cardClicked)="onClickCard($event)" [ngClass]="cardClasses">{{card.card1}}
+    </app-card></div>

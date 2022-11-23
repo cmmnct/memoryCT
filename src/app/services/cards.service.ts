@@ -9,22 +9,22 @@ import { of } from 'rxjs/internal/observable/of'
   providedIn: 'root',
 })
 export class CardsService {
-  url = 'http://localhost:3000/posts';
+  url = 'http://localhost:3000/cards'; // type inference
 
   constructor(private http: HttpClient) {}
 
-  // from local file
-  getCards(): Observable<Card[]> {
-    return this.http
-      .get<Card[]>('../../assets/cards.json')
-      .pipe(map((result) => shuffle(result.concat(result))));
-  }
+
 
   // from api
-  getCardsApi(): Observable<Card[]> {
+  getCardsApi(size:number): Observable<Card[]> {
     return this.http.get<Card[]>(this.url).pipe(
-      tap((result) => console.log('via Json server: ' + result)),
-      map((result) => shuffle(result.concat(result))),
+      tap((result) => console.log('via Json server: ' + size)),
+      map(result => {
+        let truncated = truncate(shuffle(result), size);
+        let final = shuffle(truncated.concat(truncated));
+        let cardset = final.map(item => new Card(item.set, item.card1, item.card2, item.exposed))
+        return cardset;
+      }),
       catchError((err) => {
         console.log('geen API gevonden');
         return of(err);
@@ -33,7 +33,14 @@ export class CardsService {
   }
 }
 
-export function shuffle(array:Array<any>) {
+export function truncate(array: Array<any>, size: number) {
+  let length = Math.floor(Math.pow(size, 2)/2);
+  return array.splice(0, length)
+}
+
+export function shuffle(array: Array<any>) {
+  
+  //fisher yates shuffle
   var copy = [],
     n = array.length,
     i;

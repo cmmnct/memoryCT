@@ -1,109 +1,118 @@
 {
-  "posts": [
+  "cards": [
     {
       "set": "eend",
       "card1": "duck",
-      "card2": "duck"
+      "card2": "duck",
+      "exposed": false
     },
     {
       "set": "kitten",
       "card1": "kitten",
-      "card2": "kitten"
+      "card2": "kitten",
+      "exposed": false
     },
     {
       "set": "big",
       "card1": "piglet",
-      "card2": "piglet"
+      "card2": "piglet",
+      "exposed": false
     },
     {
       "set": "puppy",
       "card1": "puppy",
-      "card2": "puppy"
+      "card2": "puppy",
+      "exposed": false
     },
     {
       "set": "kalf",
       "card1": "calf",
-      "card2": "calf"
+      "card2": "calf",
+      "exposed": false
     },
     {
       "set": "veulen",
       "card1": "veal",
-      "card2": "veal"
+      "card2": "veal",
+      "exposed": false
     },
     {
       "set": "lam",
       "card1": "lamb",
-      "card2": "lamb"
+      "card2": "lamb",
+      "exposed": false
     },
     {
       "set": "haan",
       "card1": "rooster",
-      "card2": "rooster"
+      "card2": "rooster",
+      "exposed": false
     },
     {
       "set": "paard",
       "card1": "horse",
-      "card2": "horse"
+      "card2": "horse",
+      "exposed": false
     },
     {
       "set": "muis",
       "card1": "mouse",
-      "card2": "mouse"
+      "card2": "mouse",
+      "exposed": false
     },
     {
       "set": "hond",
       "card1": "dog",
-      "card2": "dog"
+      "card2": "dog",
+      "exposed": false
     },
     {
       "set": "kat",
       "card1": "cat",
-      "card2": "cat"
+      "card2": "cat",
+      "exposed": false
     },
     {
       "set": "gans",
       "card1": "goose",
-      "card2": "goose"
+      "card2": "goose",
+      "exposed": false
     },
     {
       "set": "geit",
       "card1": "goat",
-      "card2": "goat"
+      "card2": "goat",
+      "exposed": false
     },
     {
       "set": "schaap",
       "card1": "sheep",
-      "card2": "sheep"
+      "card2": "sheep",
+      "exposed": false
     },
     {
       "set": "varken",
       "card1": "pig",
-      "card2": "pig"
+      "card2": "pig",
+      "exposed": false
     },
     {
       "set": "koe",
       "card1": "cow",
-      "card2": "cow"
+      "card2": "cow",
+      "exposed": false
     },
     {
       "set": "kuiken",
       "card1": "chick",
-      "card2": "chick"
+      "card2": "chick",
+      "exposed": false
     },
     {
       "set": "kip",
       "card1": "hen",
-      "card2": "hen"
+      "card2": "hen",
+      "exposed": false
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

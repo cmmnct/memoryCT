@@ -11,15 +11,51 @@ import { CardsService } from '../services/cards.service';
 export class MemoryComponent implements OnInit {
   cards$!: Observable<Card[]>;
   cardbase$!: Observable<Card[]>;
+  cardClasses: string;
+  list: number[];
+  boardOption: number;
+  firstCard!: Card | null;
+  secondCard!: Card | null;
 
-  constructor(private cardservice: CardsService) {}
-
-  ngOnInit(): void {
-    this.cards$ = this.cardservice.getCards()
-    this.cardbase$ = this.cardservice.getCardsApi()
+  constructor(private cardservice: CardsService) {
+    this.list = [4, 5, 6];
+    this.boardOption = -1;
+    this.cardClasses = `card`;
   }
 
-  onClickCard(event: Card) {
-    console.log(event.card1)
+  ngOnInit(): void {
+    //this.cardbase$ = this.cardservice.getCardsApi(6)
+  }
+
+  onClickCard(clickedCard: Card) {
+    console.log(clickedCard.card1);
+    if (!this.firstCard) {
+      clickedCard.exposed = true;
+      this.firstCard = clickedCard;
+    } else if (
+      this.firstCard &&
+      !this.secondCard &&
+      clickedCard !== this.firstCard
+    ) {
+      clickedCard.exposed = true;
+      this.secondCard = clickedCard;
+      this.evaluateMatch();
+    }
+  }
+
+  onSelectBoard() {
+    this.cardClasses = `card card${this.boardOption}`;
+    this.cardbase$ = this.cardservice.getCardsApi(this.boardOption);
+  }
+
+  evaluateMatch() {
+    setTimeout(() => {
+      if (this.firstCard && this.secondCard) {
+        this.firstCard.exposed = false;
+        this.firstCard = null;
+        this.secondCard.exposed = false;
+        this.secondCard = null;
+      }
+    }, 2000);
   }
 }
