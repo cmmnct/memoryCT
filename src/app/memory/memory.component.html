@@ -7,5 +7,5 @@
 
 <h1>vanuit JSON server met Card component</h1>
 <div class="gamecontainer">
-    <app-card [ngClass]="{hidden : card.state.hidden} " *ngFor="let card of cardbase$ | async" [card]="card" (cardClicked)="onClickCard($event)" [ngClass]="cardClasses">{{card.card1}}
+    <app-card [ngClass]="{hidden : card.state.hidden, cardClasses} " *ngFor="let card of cardbase$ | async" [card]="card" (cardClicked)="onClickCard($event)">{{card.card1}}
     </app-card></div>

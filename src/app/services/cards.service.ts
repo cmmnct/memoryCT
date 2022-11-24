@@ -22,7 +22,7 @@ export class CardsService {
       map(result => {
         let truncated = truncate(shuffle(result), size);
         let final = shuffle(truncated.concat(truncated));
-        let cardset = final.map(item => new Card(item.set, item.card1, item.card2))
+        let cardset = final.map(item => new Card(item.set, item.card1, item.card2));
         return cardset;
       }),
       catchError((err) => {

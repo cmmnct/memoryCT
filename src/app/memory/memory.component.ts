@@ -24,7 +24,9 @@ export class MemoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.cardbase$ = this.cardservice.getCardsApi(6)
+    if (window.localStorage.getItem("gamestate")) {
+      
+    }
   }
 
   onClickCard(clickedCard: Card) {
@@ -53,6 +55,7 @@ export class MemoryComponent implements OnInit {
       if (this.firstCard && this.secondCard) {
         this.firstCard.state.covered = true;
         this.secondCard.state.covered = true;
+        //to do check op match
         this.firstCard.state.hidden = true;
         this.secondCard.state.hidden = true;
         this.firstCard = undefined;
