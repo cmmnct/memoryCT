@@ -1,4 +1,4 @@
-<div [ngSwitch]="card.state.covered">
+<div [ngSwitch]="card.state.covered" [ngClass]="{hidden : card.state.hidden}">
     <img *ngSwitchCase="false" (click)="onClickCard()" class="card" [src]="'assets/img/'+card.card1+'.jpg'">
     <img *ngSwitchCase="true" (click)="onClickCard()" class="card" [src]="'assets/img/cover.jpg'">
 </div>

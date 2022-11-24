@@ -1,11 +1,13 @@
 <h1 style="text-align:center">Memory</h1>
 <select [(ngModel)]="boardOption" (change)="onSelectBoard()">
-    <option value="-1" disabled selected >Kies een speelveld</option>
+    <option value="-1" disabled selected>Kies een speelveld</option>
     <option *ngFor="let item of list" [value]="item">{{item}} x {{item}}</option>
 </select>
 <hr>
 
 <h1>vanuit JSON server met Card component</h1>
 <div class="gamecontainer">
-    <app-card  [ngClass]="cardClasses" *ngFor="let card of cardbase$ | async" [card]="card" (cardClicked)="onClickCard($event)">{{card.card1}}
-    </app-card></div>
+    <app-card [ngClass]="cardClasses" *ngFor="let card of cardbase$ | async" [card]="card"
+        (cardClicked)="onClickCard($event)">{{card.card1}}
+    </app-card>
+</div>

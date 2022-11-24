@@ -4,11 +4,11 @@ import { Card } from '../models/card';
 import { CardsService } from '../services/cards.service';
 
 @Component({
-  selector: 'app-memory',
-  templateUrl: './memory.component.html',
-  styleUrls: ['./memory.component.css'],
+  selector: 'app-duplicate',
+  templateUrl: './duplicate.component.html',
+  styleUrls: ['./duplicate.component.css'],
 })
-export class MemoryComponent implements OnInit {
+export class DuplicateComponent implements OnInit {
   cards$!: Observable<Card[]>;
   cardbase$!: Observable<Card[]>;
   cardClasses: string;
@@ -54,16 +54,12 @@ export class MemoryComponent implements OnInit {
       if (this.firstCard && this.secondCard) {
         this.firstCard.state.covered = true;
         this.secondCard.state.covered = true;
-        if (this.firstCard.card1 === this.secondCard.card1) {
-          this.firstCard.state.hidden = true;
-          this.secondCard.state.hidden = true;
-          // to do : ophogen van de score
-        }
-
+        //to do check op match
+        this.firstCard.state.hidden = true;
+        this.secondCard.state.hidden = true;
         this.firstCard = undefined;
         this.secondCard = undefined;
       }
     }, 2000);
   }
-
 }
