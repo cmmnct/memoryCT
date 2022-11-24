@@ -2,10 +2,11 @@
     display: flex;
     flex-wrap: wrap;
     background-color: cadetblue;
-    padding: 10px;
+    
+    border: 1px solid rgba(0,0,0,0);
     }
 .card {
-    background-size: cover;
+    
     box-sizing: border-box;
 }
 
@@ -22,4 +23,8 @@
 .card6 {
     width: 16.666667%;
     padding: 5px;
+}
+
+.hidden {
+    visibility: hidden;
 }

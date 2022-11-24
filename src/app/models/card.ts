@@ -3,7 +3,12 @@ export class Card {
         public set: string,
         public card1: string,
         public card2: string,
-        public exposed: boolean
+        public state =  {
+            "covered": true,
+            "hidden": false
+        },
+        public covered: boolean = true,
+        public hidden: boolean = false
     ) {
         
     }

@@ -14,8 +14,8 @@ export class MemoryComponent implements OnInit {
   cardClasses: string;
   list: number[];
   boardOption: number;
-  firstCard!: Card | null;
-  secondCard!: Card | null;
+  firstCard!: Card | undefined;
+  secondCard!: Card | undefined;
 
   constructor(private cardservice: CardsService) {
     this.list = [4, 5, 6];
@@ -30,14 +30,14 @@ export class MemoryComponent implements OnInit {
   onClickCard(clickedCard: Card) {
     console.log(clickedCard.card1);
     if (!this.firstCard) {
-      clickedCard.exposed = true;
+      clickedCard.state.covered = false;
       this.firstCard = clickedCard;
     } else if (
       this.firstCard &&
       !this.secondCard &&
       clickedCard !== this.firstCard
     ) {
-      clickedCard.exposed = true;
+      clickedCard.state.covered = false;
       this.secondCard = clickedCard;
       this.evaluateMatch();
     }
@@ -51,10 +51,13 @@ export class MemoryComponent implements OnInit {
   evaluateMatch() {
     setTimeout(() => {
       if (this.firstCard && this.secondCard) {
-        this.firstCard.exposed = false;
-        this.firstCard = null;
-        this.secondCard.exposed = false;
-        this.secondCard = null;
+        this.firstCard.state.covered = true;
+        this.secondCard.state.covered = true;
+        this.firstCard.state.hidden = true;
+        this.secondCard.state.hidden = true;
+        this.firstCard = undefined;
+        this.secondCard = undefined;
+        
       }
     }, 2000);
   }
